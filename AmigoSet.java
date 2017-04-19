@@ -61,4 +61,16 @@ public class AmigoSet<E> extends AbstractSet<E> implements Serializable, Cloneab
     public boolean remove(Object o) {
         return map.remove(o)==PRESENT;
     }
+
+    @Override
+    public Object clone() {
+        try {
+            AmigoSet copy = (AmigoSet)super.clone();
+            copy.map = (HashMap) map.clone();
+            return copy;
+        }
+        catch (Exception e) {
+            throw new InternalError();
+        }
+    }
 }
